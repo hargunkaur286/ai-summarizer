@@ -14,3 +14,4 @@ STEP 3: npm i @reduxjs/toolkit
 STEP 4: download the zip folder and move it to the src file. 
 STEP 5: Add App.jsx and App.css and copy paste the css from the github gist
 STEP 6: Install tailwind css with vite. customizing the tailwind by adding fonts in tailwind.config.js and putting those fonts in the index.html
+STEP 7: Added the Hero and Demo File.
