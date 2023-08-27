@@ -11,6 +11,8 @@ const Demo = () => {
 
     const [allArticles, setAllArticles] = useState([]);
 
+    const [copied, setCopied] = useState("");
+
     const [getSummary, {error, isFetching}] = useLazyGetSummaryQuery();
 
     //store the data in the local storage
@@ -44,6 +46,14 @@ const Demo = () => {
             localStorage.setItem('articles', JSON.stringify(updatedAllArticles))
         }
     }
+
+    //copy to clipboard
+    const handleCopy = (copyUrl) => {
+        setCopied(copyUrl);
+        navigator.clipboard.writeText(copyUrl);
+        setTimeout(()=> setCopied(false), 3000);
+    }
+
     return (
         <section className="mt-16 w-full max-w-xl">
             {/* Search */}
@@ -82,9 +92,9 @@ const Demo = () => {
                             onClick={() => setArticle(item)}
                             className="link_card"
                         >
-                            <div className="copy_btn">
+                            <div className="copy_btn" onClick={()=> handleCopy(item.url)}>
                                 <img 
-                                src={copy}
+                                src={copied === item.url ? tick : copy}
                                 alt="copy_icon"
                                 className="w-[40%] h-[40%] object-contain"
                                 />
